@@ -48,8 +48,8 @@ const main = async () => {
         
         app.use([notFoundMiddleware, errorHandlerMiddleware]);
 
-        app.listen(PORT, () => {
-            console.log('[SERVER]: Server is up at http://localhost:' + PORT);
+        app.listen(process.env.PORT || PORT, () => {
+            console.log('[SERVER]: Server is up at port ' + PORT);
         })
     } catch (error) {
         console.error('[ERROR]: ', error);
