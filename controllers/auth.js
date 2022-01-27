@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt');
 
 const { BadRequestError, NotFoundError, AuthenticationError } = require('../errors/customErrors');
-const User = require('../models/Users');
+const User = require('../models/users');
 
 const register = async (req, res) => {
     try {
