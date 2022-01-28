@@ -6,6 +6,10 @@ const app = express();
 
 const connect = require('./db/connect');
 
+// documentaion
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('yamljs').load('./docs/docs.yaml');
+
 // security packages
 const helmet = require('helmet');
 const cors = require('cors');
@@ -45,6 +49,7 @@ const main = async () => {
 
         app.use('/api/v1/auth', authRouter);
         app.use('/api/v1/jobs', authenticateMiddelware, jobsRouter);
+        app.use('/api/v1/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
         
         app.use([notFoundMiddleware, errorHandlerMiddleware]);
 
